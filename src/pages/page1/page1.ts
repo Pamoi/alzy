@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { NoteViewPage } from '../note-view/note-view';
+import { NoteEditPage } from '../note-edit/note-edit';
+import { Note } from '../../app/note';
+import { NoteService } from '../../app/note.service';
 
 @Component({
   selector: 'page-page1',
@@ -10,21 +13,25 @@ import { NoteViewPage } from '../note-view/note-view';
 })
 export class Page1 {
 
-  notes: Array<string>;
+  notes: Array<Note>;
 
-  constructor(public navCtrl: NavController) {
-    this.notes = [];
-    for (var i = 1; i < 13; i++) {
-      this.notes.push('Note ' + i);
-    }
+  constructor(public navCtrl: NavController, private noteService: NoteService) {
+
+  }
+
+  ionViewDidEnter() {
+    this.noteService.getAllNotes().then(notes => this.notes = notes);
   }
 
   showNote(note) {
     this.navCtrl.push(NoteViewPage, {
-      note: {
-        title: note,
-        body: '<p>Some text inside of the note.</p><ul><li>This note</li><li>also contains</li><li>a list</li></ul><p><strong>That</strong>\'s it.</p>'
-      }
+      noteId: note.id
+    });
+  }
+
+  newNote() {
+    this.navCtrl.push(NoteEditPage, {
+      note: this.noteService.newNote()
     });
   }
 

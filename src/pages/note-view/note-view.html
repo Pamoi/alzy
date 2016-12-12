@@ -12,6 +12,5 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>{{ note.title }}</h3>
-  <div [innerHTML]="note.body"></div>
+  <div [innerHTML]="note.toHtml()"></div>
 </ion-content>

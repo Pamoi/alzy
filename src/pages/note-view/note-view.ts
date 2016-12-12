@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { NoteEditPage } from '../note-edit/note-edit';
+import { Note } from '../../app/note';
+import { NoteService } from '../../app/note.service';
 
 @Component({
   selector: 'note-view',
@@ -10,10 +12,11 @@ import { NoteEditPage } from '../note-edit/note-edit';
 })
 export class NoteViewPage {
 
-  note: any;
+  note: Note = new Note(0, '', new Date(), new Date());
 
-  constructor(public navCtrl: NavController, navParams: NavParams, public alertCtrl: AlertController) {
-    this.note = navParams.get("note");
+  constructor(public navCtrl: NavController, navParams: NavParams, public alertCtrl: AlertController,
+    private noteService: NoteService) {
+    this.noteService.getNote(navParams.get('noteId')).then(note => this.note = note);
   }
 
   editNote() {
@@ -32,7 +35,7 @@ export class NoteViewPage {
         {
           text: 'Delete',
           handler: () => {
-            // Delete the note...
+            this.noteService.deleteNote(this.note);
             this.navCtrl.pop();
           }
         }

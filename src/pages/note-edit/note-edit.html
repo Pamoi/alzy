@@ -9,7 +9,6 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>{{ note.title }}</h3>
-  {{ note.body }}
+<ion-content>
+  <textarea class="editor" [(ngModel)]="note.source"></textarea>
 </ion-content>
