@@ -8,10 +8,10 @@ import { Note } from '../../app/note';
 import { NoteService } from '../../app/note.service';
 
 @Component({
-  selector: 'page-page1',
-  templateUrl: 'page1.html'
+  selector: 'page-node-listt',
+  templateUrl: 'note-list.html'
 })
-export class Page1 {
+export class NoteListPage {
 
   notes: Array<Note>;
 

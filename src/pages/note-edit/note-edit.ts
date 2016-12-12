@@ -17,8 +17,17 @@ export class NoteEditPage {
     this.note = navParams.get("note");
   }
 
-  done() {
+  ionViewWillLeave() {
+    // Do not save empty notes
+    if (this.note.source.trim() == '#' || this.note.source.trim() == '') {
+      return;
+    }
+
+    this.note.editDate = new Date();
     this.noteService.saveNote(this.note);
+  }
+
+  done() {
     this.navCtrl.pop();
   }
 

@@ -70,6 +70,6 @@ export class NoteService {
   }
 
   newNote(): Note {
-    return new Note(0, '# Title', new Date(), new Date());
+    return new Note(0, '# ', new Date(), new Date());
   }
 }

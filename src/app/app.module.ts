@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NoteService } from './note.service';
-import { Page1 } from '../pages/page1/page1';
+import { NoteListPage } from '../pages/note-list/note-list';
 import { Page2 } from '../pages/page2/page2';
 import { NoteViewPage } from '../pages/note-view/note-view';
 import { NoteEditPage } from '../pages/note-edit/note-edit';
@@ -11,7 +11,7 @@ import { NoteEditPage } from '../pages/note-edit/note-edit';
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
+    NoteListPage,
     Page2,
     NoteViewPage,
     NoteEditPage
@@ -22,7 +22,7 @@ import { NoteEditPage } from '../pages/note-edit/note-edit';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
+    NoteListPage,
     Page2,
     NoteViewPage,
     NoteEditPage
