@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Edit note</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="done()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>{{ note.title }}</h3>
+  {{ note.body }}
+</ion-content>
