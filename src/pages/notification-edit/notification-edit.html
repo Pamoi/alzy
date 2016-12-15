@@ -1,0 +1,42 @@
+<!--
+  Generated template for the NotificationEdit page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit notification</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="done()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YY" [(ngModel)]="date" [min]="now" [max]="max">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="date" [min]="now" [max]="max">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Description</ion-label>
+      <ion-textarea [(ngModel)]="description" rows="6"></ion-textarea>
+    </ion-item>
+    <ion-item></ion-item>
+  </ion-list>
+</ion-content>

@@ -20,7 +20,17 @@ export class NoteListPage {
   }
 
   ionViewDidEnter() {
-    this.noteService.getAllNotes().then(notes => this.notes = notes);
+    this.noteService.getAllNotes().then(notes => {
+      function compareNotes(a: Note, b: Note) {
+        if (a.editDate > b.editDate) {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+
+      this.notes = notes.sort(compareNotes);
+    });
   }
 
   showNote(note) {

@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { NoteListPage } from '../pages/note-list/note-list';
-import { Page2 } from '../pages/page2/page2';
+import { NotificationListPage } from '../pages/notification-list/notification-list';
 
 
 @Component({
@@ -12,9 +12,9 @@ import { Page2 } from '../pages/page2/page2';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = NoteListPage;
+  rootPage: any = NotificationListPage;
   notePage: any = NoteListPage;
-  otherPage: any = Page2;
+  notificationPage: any = NotificationListPage;
 
   constructor(public platform: Platform) {
     this.initializeApp();

@@ -3,18 +3,21 @@ import { Storage } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NoteService } from './note.service';
+import { NotificationService } from './notification.service';
 import { NoteListPage } from '../pages/note-list/note-list';
-import { Page2 } from '../pages/page2/page2';
+import { NotificationListPage } from '../pages/notification-list/notification-list';
 import { NoteViewPage } from '../pages/note-view/note-view';
 import { NoteEditPage } from '../pages/note-edit/note-edit';
+import { NotificationEditPage } from '../pages/notification-edit/notification-edit';
 
 @NgModule({
   declarations: [
     MyApp,
     NoteListPage,
-    Page2,
+    NotificationListPage,
     NoteViewPage,
-    NoteEditPage
+    NoteEditPage,
+    NotificationEditPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,14 +26,16 @@ import { NoteEditPage } from '../pages/note-edit/note-edit';
   entryComponents: [
     MyApp,
     NoteListPage,
-    Page2,
+    NotificationListPage,
     NoteViewPage,
-    NoteEditPage
+    NoteEditPage,
+    NotificationEditPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Storage,
-    NoteService
+    NoteService,
+    NotificationService
   ]
 })
 export class AppModule {}
