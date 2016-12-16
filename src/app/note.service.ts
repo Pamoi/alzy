@@ -13,7 +13,7 @@ export class NoteService {
   }
 
   private noteFromObj(obj: any): Note {
-    return new Note(obj.id, obj.source, obj.creationDate, obj.editDate);
+    return new Note(obj.id, obj.source, new Date(obj.creationDate), new Date(obj.editDate));
   }
 
 

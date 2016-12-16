@@ -13,7 +13,7 @@ export class NotificationService {
   }
 
   private notificationFromObj(obj: any): Notification {
-    return new Notification(obj.id, obj.date, obj.title, obj.text);
+    return new Notification(obj.id, new Date(obj.date), obj.title, obj.text);
   }
 
 
@@ -55,8 +55,21 @@ export class NotificationService {
     });
   }
 
+  deleteNotification(notification: Notification): Promise<any> {
+    return this.getAllNotifications().then(notifications => {
+      notifications = notifications.filter(e => e.id != notification.id);
+      return this.storage.set(this.notificationKey, JSON.stringify(notifications));
+    });
+  }
+
   clear(): Promise<any> {
     return this.storage.set(this.notificationKey, JSON.stringify([]))
+  }
+
+  newNotification(): Notification {
+    let date = new Date();
+    date.setSeconds(0);
+    return new Notification(0, date, '', '');
   }
 
 }

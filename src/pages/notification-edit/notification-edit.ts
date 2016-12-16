@@ -13,8 +13,8 @@ import { NotificationService } from '../../app/notification.service'
 })
 export class NotificationEditPage {
   // From https://stackoverflow.com/questions/17415579/how-to-iso-8601-format-a-date-with-timezone-offset-in-javascript
-  formatLocalDate() {
-    var now = new Date(),
+  formatLocalDate(date: Date): string {
+    var now = date,
       tzo = -now.getTimezoneOffset(),
       dif = tzo >= 0 ? '+' : '-',
       pad = function(num) {
@@ -32,26 +32,52 @@ export class NotificationEditPage {
     }
 
 
-  now: string = this.formatLocalDate();
+  now: string = this.formatLocalDate(new Date());
   max: string = '2112';
-  date: string = this.formatLocalDate();
-  title: string;
-  description: string;
+  date: string = this.formatLocalDate(new Date());
+  notification: Notification;
 
   constructor(public navCtrl: NavController, navParams: NavParams, public notificationService: NotificationService) {
-
+    this.notification = navParams.get('notification');
+    this.date = this.formatLocalDate(this.notification.date);
   }
 
   done(): void {
-    this.notificationService.saveNotification(
-      new Notification(0, new Date(this.date), this.title, this.description)).then(notification => {
-        LocalNotifications.schedule({
-          id: notification.id,
-          at: notification.date,
-          title: notification.title,
-          text: notification.text
-        });
-      });
+    this.navCtrl.pop();
+  }
+
+  delete(): void {
+    this.notificationService.deleteNotification(this.notification).then(() => {
+      if (this.notification.id != 0) {
+        LocalNotifications.cancel(this.notification.id);
+      }
+      // Set notification title empty to prevent autosave on view exit
+      this.notification.title = '';
+      this.navCtrl.pop();
+    });
+  }
+
+  ionViewWillLeave(): void {
+    // Do not save notifications with empty title
+    if (this.notification.title.trim() == '') {
+      return;
+    }
+
+    let isNew = (this.notification.id == 0);
+    this.notification.date = new Date(this.date);
+    this.notificationService.saveNotification(this.notification).then(notification => {
+      let notifObj = {
+        id: notification.id,
+        at: notification.date,
+        title: notification.title,
+        text: notification.text
+      }
+      if (isNew) {
+        LocalNotifications.schedule(notifObj);
+      } else {
+        LocalNotifications.update(notifObj);
+      }
+    });
   }
 
 }

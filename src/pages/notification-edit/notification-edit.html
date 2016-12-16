@@ -9,6 +9,9 @@
   <ion-navbar>
     <ion-title>Edit notification</ion-title>
     <ion-buttons end>
+      <button ion-button icon-only (click)="delete()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="done()">
         <ion-icon name="checkmark"></ion-icon>
       </button>
@@ -31,11 +34,11 @@
     </ion-item>
     <ion-item>
       <ion-label>Title</ion-label>
-      <ion-input [(ngModel)]="title"></ion-input>
+      <ion-input [(ngModel)]="notification.title" autofocus></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Description</ion-label>
-      <ion-textarea [(ngModel)]="description" rows="6"></ion-textarea>
+      <ion-textarea [(ngModel)]="notification.text" rows="6"></ion-textarea>
     </ion-item>
     <ion-item></ion-item>
   </ion-list>
