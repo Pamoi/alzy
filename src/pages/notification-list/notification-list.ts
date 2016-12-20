@@ -39,12 +39,19 @@ export class NotificationListPage {
       let popup = this.alertCtrl.create({
         title: notification.title,
         subTitle: notification.text,
-        buttons: ["OK"]
+        buttons: [
+          {
+            text: 'Ok',
+            handler: data => {
+              this.notificationService.deleteNotification(
+                new Notification(notification.id, new Date(), '', '')).then(() => {
+                  this.updateNotifications();
+              });
+            }
+          }
+        ]
       });
       popup.present();
-      this.notificationService.deleteNotification(new Notification(notification.id, new Date(), '', '')).then(() => {
-        this.updateNotifications();
-      });
     });
 
     NotificationListPage.isCallbackSetup = true;

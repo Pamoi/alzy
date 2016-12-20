@@ -13,7 +13,7 @@ import { HelpPage } from '../pages/help/help';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HelpPage;
+  rootPage: any = NoteListPage;
   notePage: any = NoteListPage;
   notificationPage: any = NotificationListPage;
   helpPage: any = HelpPage;
