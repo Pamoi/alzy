@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { NoteListPage } from '../pages/note-list/note-list';
 import { NotificationListPage } from '../pages/notification-list/notification-list';
+import { HelpPage } from '../pages/help/help';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { NotificationListPage } from '../pages/notification-list/notification-li
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = NotificationListPage;
+  rootPage: any = HelpPage;
   notePage: any = NoteListPage;
   notificationPage: any = NotificationListPage;
+  helpPage: any = HelpPage;
 
   constructor(public platform: Platform) {
     this.initializeApp();

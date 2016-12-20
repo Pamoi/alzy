@@ -1,0 +1,14 @@
+page-help {
+  .code {
+    @include code;
+    padding: 5px;
+  }
+
+  .rendering {
+    border-radius: 4px;
+    border-color: #e0e0e0;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+  }
+}

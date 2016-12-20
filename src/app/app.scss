@@ -14,3 +14,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@mixin code {
+  background-color: #eeeeee;
+  border-radius: 2px;
+  padding: 0px 2px;
+  margin: 2px;
+  font-family: monospace;
+}
+
+code {
+  @include code;
+}

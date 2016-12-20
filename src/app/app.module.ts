@@ -9,6 +9,7 @@ import { NotificationListPage } from '../pages/notification-list/notification-li
 import { NoteViewPage } from '../pages/note-view/note-view';
 import { NoteEditPage } from '../pages/note-edit/note-edit';
 import { NotificationEditPage } from '../pages/notification-edit/notification-edit';
+import { HelpPage } from '../pages/help/help';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NotificationEditPage } from '../pages/notification-edit/notification-ed
     NotificationListPage,
     NoteViewPage,
     NoteEditPage,
-    NotificationEditPage
+    NotificationEditPage,
+    HelpPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,7 +31,8 @@ import { NotificationEditPage } from '../pages/notification-edit/notification-ed
     NotificationListPage,
     NoteViewPage,
     NoteEditPage,
-    NotificationEditPage
+    NotificationEditPage,
+    HelpPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

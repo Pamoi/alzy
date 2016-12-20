@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Help</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2>Markdown</h2>
+  <div>
+    <p>
+      This application supports markdown formatting for notes.
+    </p>
+    <p>
+      <strong>Headings</strong> are placed on a line starting with a <code>#</code>.
+    </p>
+    <div class="code">
+        # Heading<br/>
+        ## Sub-heading<br/>
+        ### Sub-sub-heading
+    </div>
+    <p>Produces</p>
+    <div class="rendering">
+      <h1>Heading</h1>
+      <h2>Sub-heading</h2>
+      <h3>Sub-sub-heading</h3>
+    </div>
+
+    <p>
+      <strong>Paragraphs</strong> are separated by an empty line.
+    </p>
+    <div class="code">
+        The first paragraph.<br/>
+        <br/>
+        And the second one. Two spaces at the end of a line  <br/>
+        leave a line break.<br/>
+        ---<br/>
+        Horizontal line
+    </div>
+    <p>Produces</p>
+    <div class="rendering">
+      <p>The first paragraph.</p>
+      <p>And the second one. Two spaces at the end of a line<br/>
+      leave a line break.</p>
+      <hr>
+      <p>Hrizontal line</p>
+    </div>
+
+    <p>
+      <strong>Text styling</strong> is available.
+    </p>
+    <div class="code">
+      _italic_, *italic too*, __bold__ and **bold**, and `code`.
+    </div>
+    <p>Produces</p>
+    <div class="rendering">
+      <p>
+        <em>italic</em>, <em>italic too</em>, <strong>bold</strong>
+        and <strong>bold</strong>, and <code>code</code>
+      </p>
+    </div>
+
+    <p>
+      Bullet and numbered <strong>lists</strong>.
+    </p>
+    <div class="code">
+      Bullet list:<br/>
+      <br/>
+      - train<br/>
+      - car<br/>
+      - plane<br/>
+      <br/>
+      Numbered list:<br/>
+      <br/>
+      1. train<br/>
+      1. car<br/>
+      1. plane
+    </div>
+    <p>Produces</p>
+    <div class="rendering">
+      <p>Bullet list:</p>
+      <ul>
+        <li>trian</li>
+        <li>car</li>
+        <li>plane</li>
+      </ul>
+      <p>Numbered list</p>
+      <ol>
+        <li>train</li>
+        <li>car</li>
+        <li>plane</li>
+      </ol>
+    </div>
+
+    <br/>
+
+  </div>
+
+</ion-content>
