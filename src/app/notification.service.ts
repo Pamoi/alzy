@@ -32,7 +32,7 @@ export class NotificationService {
     });
   }
 
-  saveNotification(notification: Notification): Promise<Notification> {
+  saveNotification(notification: Notification): Promise<any> {
     return this.getAllNotifications().then(notifications => {
       let max = 0;
       for (let i = 0; i < notifications.length; i++) {
