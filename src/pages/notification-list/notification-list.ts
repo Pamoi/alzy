@@ -15,7 +15,6 @@ import { NotificationEditPage } from '../notification-edit/notification-edit';
 export class NotificationListPage {
 
   notifications: Array<Notification>;
-  static isCallbackSetup: boolean = false;
 
   updateNotifications(): void {
     this.notificationService.getAllNotifications().then(notifications => {
@@ -31,30 +30,12 @@ export class NotificationListPage {
   }
 
   setupNotificationCallback(): void {
-    if (NotificationListPage.isCallbackSetup) {
-      return;
-    }
-
     LocalNotifications.on('click', (notification, state) => {
-      let popup = this.alertCtrl.create({
-        title: notification.title,
-        subTitle: notification.text,
-        buttons: [
-          {
-            text: 'Ok',
-            handler: data => {
-              this.notificationService.deleteNotification(
-                new Notification(notification.id, new Date(), '', '')).then(() => {
-                  this.updateNotifications();
-              });
-            }
-          }
-        ]
+      this.notificationService.deleteNotification(
+        new Notification(notification.id, new Date(), '', '')).then(() => {
+          this.updateNotifications();
       });
-      popup.present();
     });
-
-    NotificationListPage.isCallbackSetup = true;
   }
 
   ionViewDidEnter() {
